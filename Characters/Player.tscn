@@ -1,0 +1,234 @@
+[gd_scene load_steps=50 format=3 uid="uid://q7smjwstv7ms"]
+
+[ext_resource type="Script" uid="uid://cvgphhu764ryh" path="res://Scripts/Characters/Player.gd" id="1_c3bgu"]
+[ext_resource type="Texture2D" uid="uid://eqqa6vr3jthy" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0064.png" id="2_gk2rw"]
+[ext_resource type="Texture2D" uid="uid://dl8vt7iapv4w6" path="res://Assets/Characters/Player/Idle/fighter_Idle_0001.png" id="2_nwlvs"]
+[ext_resource type="Texture2D" uid="uid://b3g3fjgio0sip" path="res://Assets/Characters/Player/dash/fighter_dash_0033.png" id="2_t1bvj"]
+[ext_resource type="Texture2D" uid="uid://ceq6t8jjn7qf2" path="res://Assets/Characters/Player/dash/fighter_dash_0034.png" id="3_1fpik"]
+[ext_resource type="Texture2D" uid="uid://bqqw2peduxrh5" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0065.png" id="3_ua2re"]
+[ext_resource type="Texture2D" uid="uid://cnqkt2hl00j2t" path="res://Assets/Characters/Player/Idle/fighter_Idle_0002.png" id="3_x35ji"]
+[ext_resource type="Texture2D" uid="uid://20tl372xvtta" path="res://Assets/Characters/Player/Idle/fighter_Idle_0003.png" id="4_o8u7c"]
+[ext_resource type="Texture2D" uid="uid://5185fxewcgt" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0066.png" id="4_qsdug"]
+[ext_resource type="Texture2D" uid="uid://b8rxjtux554mf" path="res://Assets/Characters/Player/dash/fighter_dash_0035.png" id="4_wxpdo"]
+[ext_resource type="Texture2D" uid="uid://bcoig63skbhx2" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0067.png" id="5_ecbbr"]
+[ext_resource type="Texture2D" uid="uid://dd55t7fd5uiiw" path="res://Assets/Characters/Player/dash/fighter_dash_0036.png" id="5_ihocv"]
+[ext_resource type="Texture2D" uid="uid://c3hsw8raou7fd" path="res://Assets/Characters/Player/Idle/fighter_Idle_0004.png" id="5_lli6r"]
+[ext_resource type="Texture2D" uid="uid://dl5gcosto1tpk" path="res://Assets/Characters/Player/Idle/fighter_Idle_0005.png" id="6_7wf5q"]
+[ext_resource type="Texture2D" uid="uid://bs8pypk425yhi" path="res://Assets/Characters/Player/dash/fighter_dash_0037.png" id="6_emaog"]
+[ext_resource type="Texture2D" uid="uid://dh4jc6b31i2tw" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0068.png" id="6_wmoge"]
+[ext_resource type="Texture2D" uid="uid://dboamkncnjqon" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0069.png" id="7_ewyr4"]
+[ext_resource type="Texture2D" uid="uid://d1e5oj7aar0sq" path="res://Assets/Characters/Player/Idle/fighter_Idle_0006.png" id="7_r52jx"]
+[ext_resource type="Texture2D" uid="uid://ciciuwglvvm1o" path="res://Assets/Characters/Player/dash/fighter_dash_0038.png" id="7_vh72t"]
+[ext_resource type="Texture2D" uid="uid://bsqf8sd306exx" path="res://Assets/Characters/Player/Idle/fighter_Idle_0007.png" id="8_ijtlc"]
+[ext_resource type="Texture2D" uid="uid://baw578vsqo11f" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0070.png" id="8_t1bvj"]
+[ext_resource type="Texture2D" uid="uid://dunjxyxukj7qo" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0071.png" id="9_1fpik"]
+[ext_resource type="Texture2D" uid="uid://b0v0bwfvebp7r" path="res://Assets/Characters/Player/Idle/fighter_Idle_0008.png" id="9_wbcqo"]
+[ext_resource type="Texture2D" uid="uid://dlervcd0lkvf4" path="res://Assets/Characters/Player/jump/fighter_jump_0043.png" id="10_j4b6j"]
+[ext_resource type="Texture2D" uid="uid://cg28unr2yuiek" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0072.png" id="10_wxpdo"]
+[ext_resource type="Texture2D" uid="uid://c8olqaci1n85g" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0073.png" id="11_ihocv"]
+[ext_resource type="Texture2D" uid="uid://d3gd3fl321jut" path="res://Assets/Characters/Player/jump/fighter_jump_0044.png" id="11_r0712"]
+[ext_resource type="Texture2D" uid="uid://e7p2mpcp8is7" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0074.png" id="12_emaog"]
+[ext_resource type="Texture2D" uid="uid://kesf50f8oksu" path="res://Assets/Characters/Player/jump/fighter_jump_0045.png" id="12_uigg4"]
+[ext_resource type="Texture2D" uid="uid://ymfbegmb862v" path="res://Assets/Characters/Player/jump/fighter_jump_0046.png" id="13_is2h6"]
+[ext_resource type="Texture2D" uid="uid://dbn4y6ibff8w" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0075.png" id="13_vh72t"]
+[ext_resource type="Texture2D" uid="uid://02wcpsvunabi" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0076.png" id="14_466sk"]
+[ext_resource type="Texture2D" uid="uid://c2loq8imdrc42" path="res://Assets/Characters/Player/jump/fighter_jump_0047.png" id="14_bhl4u"]
+[ext_resource type="Texture2D" uid="uid://b0aqfdm2075ls" path="res://Assets/Characters/Player/walk/fighter_walk_0009.png" id="15_e8wfh"]
+[ext_resource type="Texture2D" uid="uid://cr86e1733druh" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0077.png" id="15_sisnf"]
+[ext_resource type="Texture2D" uid="uid://c3c36qw2d16uk" path="res://Assets/Characters/Player/walk/fighter_walk_0010.png" id="16_22sje"]
+[ext_resource type="Texture2D" uid="uid://0pkopomep0wv" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0078.png" id="16_r70ff"]
+[ext_resource type="Texture2D" uid="uid://cf1copc35bxbb" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0079.png" id="17_7agc2"]
+[ext_resource type="Texture2D" uid="uid://bo6xfnuqdfreo" path="res://Assets/Characters/Player/walk/fighter_walk_0011.png" id="17_7t163"]
+[ext_resource type="Texture2D" uid="uid://e3d4c5dt7oxn" path="res://Assets/Characters/Player/walk/fighter_walk_0012.png" id="18_fu83b"]
+[ext_resource type="Texture2D" uid="uid://ddmebaxurkwts" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0080.png" id="18_v468i"]
+[ext_resource type="Texture2D" uid="uid://dghx86scrc7fk" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0081.png" id="19_fpti6"]
+[ext_resource type="Texture2D" uid="uid://tdui7w6gqlko" path="res://Assets/Characters/Player/walk/fighter_walk_0013.png" id="19_g87uq"]
+[ext_resource type="Texture2D" uid="uid://c0216xrp2whbn" path="res://Assets/Characters/Player/walk/fighter_walk_0014.png" id="20_5p30m"]
+[ext_resource type="Texture2D" uid="uid://b6koo1fq6tycm" path="res://Assets/Characters/Player/fight-combo/fighter_combo_0082.png" id="20_fofcn"]
+[ext_resource type="Texture2D" uid="uid://c5jit8jkwvctu" path="res://Assets/Characters/Player/walk/fighter_walk_0015.png" id="21_jww6h"]
+[ext_resource type="Texture2D" uid="uid://oormtlh01hik" path="res://Assets/Characters/Player/walk/fighter_walk_0016.png" id="22_1c1ow"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x870h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t1bvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1fpik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wxpdo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ihocv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_emaog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vh72t")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gk2rw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ua2re")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qsdug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ecbbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wmoge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ewyr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_t1bvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1fpik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wxpdo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ihocv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_emaog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vh72t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_466sk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_sisnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_r70ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7agc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_v468i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_fpti6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_fofcn")
+}],
+"loop": true,
+"name": &"fight-combo",
+"speed": 50.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nwlvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x35ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_o8u7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lli6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7wf5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r52jx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ijtlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wbcqo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_j4b6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r0712")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_uigg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_is2h6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bhl4u")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_e8wfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_22sje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7t163")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_fu83b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_g87uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_5p30m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jww6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1c1ow")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c3bgu"]
+radius = 18.0
+height = 74.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_c3bgu")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_x870h")
+animation = &"dash"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 70)
+shape = SubResource("CapsuleShape2D_c3bgu")
+
+[node name="Camera" type="Camera2D" parent="."]
+position_smoothing_enabled = true

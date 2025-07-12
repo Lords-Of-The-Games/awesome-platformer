@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://xyh0fx18raxm"]
+
+[ext_resource type="Script" uid="uid://6s30m054cpgv" path="res://Scripts/Levels/Level1/level_1.gd" id="1_fhqol"]
+[ext_resource type="PackedScene" uid="uid://q7smjwstv7ms" path="res://Characters/Player.tscn" id="1_w77jt"]
+[ext_resource type="Texture2D" uid="uid://dwwjhdaw4ylqo" path="res://Assets/Levels/Level1/background_photo1.jpg" id="2_3anf8"]
+[ext_resource type="Script" uid="uid://de3k6ipq7vcag" path="res://Scripts/DeathZones/death_zone_holes.gd" id="4_iotdp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w77jt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3anf8"]
+size = Vector2(3829, 42)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_iotdp"]
+a = Vector2(1986, 620)
+b = Vector2(2908, 621)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fhqol"]
+a = Vector2(-1955, 621)
+b = Vector2(-3090, 621)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nutv8"]
+size = Vector2(5996, 3006)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_fhqol")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_w77jt")
+
+[node name="Tile" type="CollisionShape2D" parent="Ground"]
+position = Vector2(116.5, -135)
+shape = SubResource("RectangleShape2D_3anf8")
+
+[node name="Player" parent="." instance=ExtResource("1_w77jt")]
+position = Vector2(1, -325)
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="BackgroundImageSprite" type="Sprite2D" parent="Background"]
+position = Vector2(-91, -876)
+texture = ExtResource("2_3anf8")
+
+[node name="DeathZone" type="Area2D" parent="."]
+script = ExtResource("4_iotdp")
+
+[node name="DeathZoneHole1" type="CollisionShape2D" parent="DeathZone"]
+shape = SubResource("SegmentShape2D_iotdp")
+
+[node name="DeathZoneHole2" type="CollisionShape2D" parent="DeathZone"]
+shape = SubResource("SegmentShape2D_fhqol")
+
+[node name="CameraBounds" type="Area2D" parent="."]
+
+[node name="CameraBoundsCollision" type="CollisionShape2D" parent="CameraBounds"]
+position = Vector2(-93, -875)
+shape = SubResource("RectangleShape2D_nutv8")
+
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
