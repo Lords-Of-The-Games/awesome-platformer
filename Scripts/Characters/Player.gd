@@ -10,7 +10,6 @@ func _physics_process(delta):
 	else:
 		velocity.y = 0
 		
-	#test for pr
 	var is_moving = false
 	var isDash = Input.is_key_pressed(KEY_SPACE)
 	velocity.x = 0
