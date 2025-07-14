@@ -25,7 +25,7 @@ jobs:
       - name: Download Godot if not cached
         if: steps.godot-cache.outputs.cache-hit != 'true'
         run: |
-          wget -O godot.zip https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.4.1-stable_linux.x86_64.zip
+          wget -O godot.zip https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
           unzip godot.zip -d godot
           chmod +x godot/Godot_v4.4.1-stable_linux_x86_64/Godot_v4.4.1-stable_linux.x86_64
 
