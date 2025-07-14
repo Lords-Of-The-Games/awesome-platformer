@@ -29,30 +29,33 @@ jobs:
           unzip godot.zip -d godot
           chmod +x godot/Godot_v4.4.1-stable_linux.x86_64
 
-      - name: Headless smoke test with stderr check
+      - name: Headless smoke test with filtered stderr check
         run: |
           mkdir -p .godot_ci_config
 
-          # Run Godot and capture stdout and stderr separately
+          # Run Godot and separate stdout and stderr
           ./godot/Godot_v4.4.1-stable_linux.x86_64 \
             --headless --editor --quit --path . \
             --editor-settings-path .godot_ci_config \
             1> godot_stdout.log 2> godot_stderr_raw.log
 
-          # Filter out harmless errors (GitPlugin, VCS null)
-          grep -v -E "ERROR: Cannot get class 'GitPlugin'|ERROR: Received a nullptr VCS extension" godot_stderr_raw.log > godot_stderr_clean.log || true
-
-          # Show full raw stderr for reference
-          echo "--- STDERR (raw) ---"
+          echo "--- Raw STDERR ---"
           cat godot_stderr_raw.log || true
 
-          # Show cleaned stderr that will be used for detection
-          echo "--- STDERR (cleaned) ---"
+          # Remove harmless plugin-related multi-line error blocks
+          awk '
+            BEGIN { skip = 0 }
+            /^ERROR: Cannot get class .GitPlugin./ || /^ERROR: Received a nullptr VCS extension/ { skip = 1; next }
+            /^ERROR:/ && skip { skip = 0 }
+            skip == 0 { print }
+          ' godot_stderr_raw.log > godot_stderr_clean.log
+
+          echo "--- Cleaned STDERR ---"
           cat godot_stderr_clean.log || true
 
-          # Fail if cleaned stderr still has content
+          # Fail if any real errors remain
           if [ -s godot_stderr_clean.log ]; then
-            echo "::error title=Godot Check::Detected errors in cleaned stderr"
+            echo "::error title=Godot Check::Detected critical errors in cleaned stderr output"
             exit 1
           else
             echo "✅ No critical stderr errors found."
