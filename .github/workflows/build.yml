@@ -29,29 +29,31 @@ jobs:
           unzip godot.zip -d godot
           chmod +x godot/Godot_v4.4.1-stable_linux.x86_64
 
-      - name: Headless smoke test with filtered error check
+      - name: Headless smoke test with stderr check
         run: |
           mkdir -p .godot_ci_config
 
+          # Run Godot and capture stdout and stderr separately
           ./godot/Godot_v4.4.1-stable_linux.x86_64 \
             --headless --editor --quit --path . \
             --editor-settings-path .godot_ci_config \
-            | tee raw_godot.log
+            1> godot_stdout.log 2> godot_stderr_raw.log
 
-          # Remove known harmless Git plugin errors
-          grep -v -E "ERROR: Cannot get class 'GitPlugin'|ERROR: Received a nullptr VCS extension" raw_godot.log > godot_clean.log
+          # Filter out harmless errors (GitPlugin, VCS null)
+          grep -v -E "ERROR: Cannot get class 'GitPlugin'|ERROR: Received a nullptr VCS extension" godot_stderr_raw.log > godot_stderr_clean.log || true
 
-          # Look for real critical errors (case-insensitive)
-          grep -iE "SCRIPT ERROR|Parse Error|Failed loading resource|Failed to load script|Invalid call|Attempt to call function on null instance|Invalid get index|Invalid set index|ERROR:" godot_clean.log > matches.log || true
+          # Show full raw stderr for reference
+          echo "--- STDERR (raw) ---"
+          cat godot_stderr_raw.log || true
 
-          # Fail the build if any critical error was found
-          if [ -s matches.log ]; then
-            echo "::error title=Godot Check::Detected critical error in Godot project"
-            echo "--- Matched Errors ---"
-            cat matches.log
+          # Show cleaned stderr that will be used for detection
+          echo "--- STDERR (cleaned) ---"
+          cat godot_stderr_clean.log || true
+
+          # Fail if cleaned stderr still has content
+          if [ -s godot_stderr_clean.log ]; then
+            echo "::error title=Godot Check::Detected errors in cleaned stderr"
             exit 1
           else
-            echo "✅ No critical Godot errors found."
+            echo "✅ No critical stderr errors found."
           fi
-          echo "--- raw_godot.log ---"
-          cat raw_godot.log
