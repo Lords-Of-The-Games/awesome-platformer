@@ -42,12 +42,11 @@ jobs:
           echo "--- Raw STDERR ---"
           cat godot_stderr_raw.log || true
 
-          # Remove harmless plugin-related multi-line error blocks
+          # Remove harmless GitPlugin + VCS error blocks (2 lines each)
           awk '
-            BEGIN { skip = 0 }
-            /^ERROR: Cannot get class .GitPlugin./ || /^ERROR: Received a nullptr VCS extension/ { skip = 1; next }
-            /^ERROR:/ && skip { skip = 0 }
-            skip == 0 { print }
+            /ERROR: Cannot get class .GitPlugin./ { getline; next }
+            /ERROR: Received a nullptr VCS extension/ { getline; next }
+            { print }
           ' godot_stderr_raw.log > godot_stderr_clean.log
 
           echo "--- Cleaned STDERR ---"
