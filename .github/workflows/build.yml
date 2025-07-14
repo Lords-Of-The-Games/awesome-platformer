@@ -29,14 +29,16 @@ jobs:
           unzip godot.zip -d godot
           chmod +x godot/Godot_v4.4.1-stable_linux.x86_64
 
-      - name: Run headless project load (smoke test)
+      - name: Headless editor project load + fail on error
         run: |
           mkdir -p .godot_ci_config
+
           ./godot/Godot_v4.4.1-stable_linux.x86_64 \
             --headless --editor --quit --path . \
-            --editor-settings-path .godot_ci_config
+            --editor-settings-path .godot_ci_config \
+            | tee godot.log
 
-      - name: Run runtime + lint test script
-        run: |
-          ./godot/Godot_v4.4.1-stable_linux.x86_64  \ 
-            --headless --rendering-driver opengl3 --script res://tests/test_runtime_errors.gd --path .
+          grep -E "SCRIPT ERROR|Parse Error|ERROR: Failed to load script" godot.log && {
+            echo "::error Detected critical error in Godot load"
+            exit 1
+          }
