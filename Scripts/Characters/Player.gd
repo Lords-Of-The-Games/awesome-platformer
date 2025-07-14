@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed: int = 400
 @export var jump_velocity: int = -800
 var gravity: int = 2000
-
+asdadsad
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
