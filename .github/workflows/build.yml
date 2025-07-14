@@ -34,8 +34,8 @@ jobs:
           mkdir -p ~/.config/godot
           cat <<EOF > ~/.config/godot/editor_settings-4.tres
           [gd_resource type="EditorSettings" format=3]
-          [version_control]
-          editor_plugin = ""
+
+          editor_plugins/vcs/editor_plugin = ""
           EOF
 
       - name: Run headless project load (smoke test)
