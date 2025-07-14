@@ -27,14 +27,14 @@ jobs:
         run: |
           wget -O godot.zip https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
           unzip godot.zip -d godot
-          chmod +x godot/Godot_v4.4.1-stable_linux_x86_64/Godot_v4.4.1-stable_linux.x86_64
+          chmod +x godot/Godot_v4.4.1-stable_linux.x86_64
 
       - name: Run headless project load (smoke test)
         run: |
-          ./godot/Godot_v4.4.1-stable_linux_x86_64/Godot_v4.4.1-stable_linux.x86_64  \
+          ./godot/Godot_v4.4.1-stable_linux.x86_64  \
             --headless --editor --quit --path .
 
       - name: Run runtime + lint test script
         run: |
-          ./godot/Godot_v4.4.1-stable_linux_x86_64/Godot_v4.4.1-stable_linux.x86_64  \ 
-            --rendering-driver opengl3 --script res://tests/test_runtime_errors.gd --path .
+          ./godot/Godot_v4.4.1-stable_linux.x86_64  \ 
+            --headless --rendering-driver opengl3 --script res://tests/test_runtime_errors.gd --path .
