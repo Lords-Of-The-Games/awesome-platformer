@@ -29,9 +29,13 @@ jobs:
           unzip godot.zip -d godot
           chmod +x godot/Godot_v4.4.1-stable_linux.x86_64
 
-      - name: Disable GitPlugin in CI (temporary change)
+      - name: Disable Git plugin in CI
         run: |
-           sed -i 's/^vcs_name="GitPlugin"/vcs_name=""/' project.godot
+          mkdir -p ~/.config/godot
+          cat <<EOF > ~/.config/godot/editor_settings-4.tres
+          [version_control]
+          editor_plugin = ""
+          EOF
 
       - name: Run headless project load (smoke test)
         run: |
