@@ -40,7 +40,10 @@ jobs:
 
           grep -v -E "ERROR: Cannot get class 'GitPlugin'|ERROR: Received a nullptr VCS extension" raw_godot.log > godot_clean.log
 
-          grep -E "SCRIPT ERROR|Parse Error|Failed loading resource|Failed to load script|Invalid call|Attempt to call function on null instance|Invalid get index|Invalid set index" godot_clean.log && {
+          if grep -E "SCRIPT ERROR|Parse Error|Failed loading resource|Failed to load script|Invalid call|Attempt to call function on null instance|Invalid get index|Invalid set index" godot_clean.log > matches.log; then
             echo "::error title=Godot Check::Detected critical error in Godot project"
+            cat matches.log
             exit 1
-          }
+          else
+            echo "✅ No critical Godot errors found."
+          fi
