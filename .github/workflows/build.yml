@@ -29,19 +29,12 @@ jobs:
           unzip godot.zip -d godot
           chmod +x godot/Godot_v4.4.1-stable_linux.x86_64
 
-      - name: Disable Git plugin in CI
-        run: |
-          mkdir -p ~/.config/godot
-          cat <<EOF > ~/.config/godot/editor_settings-4.tres
-          [gd_resource type="EditorSettings" format=3]
-
-          editor_plugins/vcs/editor_plugin = ""
-          EOF
-
       - name: Run headless project load (smoke test)
         run: |
-          ./godot/Godot_v4.4.1-stable_linux.x86_64  \
-            --headless --editor --quit --path .
+          mkdir -p .godot_ci_config
+          ./godot/Godot_v4.4.1-stable_linux.x86_64 \
+            --headless --editor --quit --path . \
+            --editor-settings-path .godot_ci_config
 
       - name: Run runtime + lint test script
         run: |
