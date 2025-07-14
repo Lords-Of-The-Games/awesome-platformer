@@ -29,9 +29,9 @@ jobs:
           unzip godot.zip -d godot
           chmod +x godot/Godot_v4.4.1-stable_linux.x86_64
 
-      - name: Disable Git plugin with .gdignore
+      - name: Disable GitPlugin in CI (temporary change)
         run: |
-          echo > addons/godot_git_plugin/.gdignore
+           sed -i 's/^vcs_name="GitPlugin"/vcs_name=""/' project.godot
 
       - name: Run headless project load (smoke test)
         run: |
