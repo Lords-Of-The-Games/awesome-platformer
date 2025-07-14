@@ -29,16 +29,18 @@ jobs:
           unzip godot.zip -d godot
           chmod +x godot/Godot_v4.4.1-stable_linux.x86_64
 
-      - name: Headless editor project load + fail on error
+      - name: Headless smoke test with filtered error check
         run: |
           mkdir -p .godot_ci_config
 
           ./godot/Godot_v4.4.1-stable_linux.x86_64 \
             --headless --editor --quit --path . \
             --editor-settings-path .godot_ci_config \
-            | tee godot.log
+            | tee raw_godot.log
 
-          grep -E "SCRIPT ERROR|Parse Error|ERROR: Failed to load script" godot.log && {
-            echo "::error Detected critical error in Godot load"
+          grep -v -E "ERROR: Cannot get class 'GitPlugin'|ERROR: Received a nullptr VCS extension" raw_godot.log > godot_clean.log
+
+          grep -E "SCRIPT ERROR|Parse Error|Failed loading resource|Failed to load script|Invalid call|Attempt to call function on null instance|Invalid get index|Invalid set index" godot_clean.log && {
+            echo "::error Detected critical error in Godot project"
             exit 1
           }
