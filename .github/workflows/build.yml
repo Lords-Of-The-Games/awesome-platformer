@@ -38,10 +38,16 @@ jobs:
             --editor-settings-path .godot_ci_config \
             | tee raw_godot.log
 
+          # Remove known harmless Git plugin errors
           grep -v -E "ERROR: Cannot get class 'GitPlugin'|ERROR: Received a nullptr VCS extension" raw_godot.log > godot_clean.log
 
-          if grep -E "ERROR:|SCRIPT ERROR|Parse error|Failed loading resource|Failed to load script|Invalid call|Attempt to call function on null instance|Invalid get index|Invalid set index" godot_clean.log > matches.log; then
+          # Look for real critical errors (case-insensitive)
+          grep -iE "SCRIPT ERROR|Parse Error|Failed loading resource|Failed to load script|Invalid call|Attempt to call function on null instance|Invalid get index|Invalid set index|ERROR:" godot_clean.log > matches.log || true
+
+          # Fail the build if any critical error was found
+          if [ -s matches.log ]; then
             echo "::error title=Godot Check::Detected critical error in Godot project"
+            echo "--- Matched Errors ---"
             cat matches.log
             exit 1
           else
