@@ -53,3 +53,5 @@ jobs:
           else
             echo "✅ No critical Godot errors found."
           fi
+          echo "--- raw_godot.log ---"
+          cat raw_godot.log
